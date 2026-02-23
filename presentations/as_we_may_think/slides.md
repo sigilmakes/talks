@@ -200,15 +200,6 @@ layout: center
 4. Collaboration — shared memory, shared agents
 
 ---
-layout: center
-hideInToc: true
----
-
-# Conway's Game of Life
-
-<GameOfLife />
-
----
 
 # My principles of agentic programming
 
