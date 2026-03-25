@@ -302,6 +302,8 @@ Where a class hides **state**, a monad hides **control flow**.
 
 </div>
 
+<img src="./images/izutsumi.png" class="absolute bottom-8 right-12 h-32" />
+
 </v-click>
 
 ---
@@ -359,6 +361,8 @@ List handles the iteration. Result handles the errors. Each one does its job.
 You just compose them. They don't step on each other.
 
 </div>
+
+<img src="./images/nonon_tea.jpeg" class="absolute bottom-8 right-12 h-28 rounded" />
 
 </v-click>
 
@@ -436,6 +440,8 @@ An **endofunctor** is a functor from a category to itself — our boxes map Pyth
 <div class="mt-4" style="color: #d4639a">
 
 So yeah. A monad is a monoid in the category of endofunctors. You know what that means now.
+
+<img src="./images/smirk.png" class="absolute bottom-8 right-12 h-40 rounded" />
 
 </div>
 
