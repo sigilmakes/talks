@@ -443,7 +443,7 @@ A **monoid** is something with an identity and an associative operation — that
 
 So yeah. A monad is a monoid in the category of endofunctors. You know what that means now.
 
-<img src="./images/smirk.png" class="absolute bottom-8 right-12 h-40 rounded" />
+<img src="./images/smirk.png" class="absolute bottom-4 right-4 h-28 rounded" />
 
 </div>
 
