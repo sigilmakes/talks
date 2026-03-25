@@ -457,21 +457,22 @@ You *can* solve these problems with classes. People do. It gets messy.
 class SafeCSVReader(BaseReader):           # inheritance
 class ValidatedCSVReader(SafeCSVReader):   # more inheritance
 class LoggedValidatedCSVReader(ValidatedCSVReader):  # oh no
+class AsyncLoggedValidatedCSVReader(LoggedValidatedCSVReader):  # OH NO
 ```
-
-Classes compose through **inheritance** — you stack behaviours by subclassing. This does not scale.
 
 </v-click>
 
 <v-click>
 
-Monads compose through **chaining** — you stack behaviours by combining boxes.
+Monads compose through **chaining**, not inheritance. You snap boxes together.
 
 ```python
 Result.ok("data.csv").bind(read_csv).bind(validate).bind(log)
 ```
 
-Each box does one thing. You snap them together. No inheritance tree. No diamond problem. No `LoggedValidatedSafeCSVReaderFactory`.
+No inheritance tree. No diamond problem. No `AsyncLoggedValidatedSafeCSVReaderFactory`.
+
+Rust doesn't even *have* inheritance. It uses `Result` and `Option` monads instead. It's fine. It's better, actually.
 
 </v-click>
 
@@ -484,6 +485,8 @@ Composition over inheritance. The box doesn't need to know about the other boxes
 </div>
 
 </v-click>
+
+<img src="./images/izutsumi.png" class="absolute bottom-8 right-12 h-32" />
 
 ---
 
