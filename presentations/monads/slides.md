@@ -36,7 +36,7 @@ hideInToc: true
 
 <div class="mt-8 text-2xl" style="color: #d4639a">
 
-no.
+...I'm so sorry. let me start over.
 
 </div>
 
@@ -52,7 +52,7 @@ layout: center
 
 <div class="mt-8 text-lg opacity-70">
 
-that's it. we can go from here.
+I promise. we can go from here.
 
 </div>
 
@@ -62,7 +62,7 @@ that's it. we can go from here.
 
 # The Problem
 
-Things go wrong. Values might be missing. Python makes you deal with it like this.
+So. Things go wrong. Values might be missing. And Python makes you deal with it like this.
 
 <v-click>
 
@@ -82,9 +82,9 @@ if user is not None:
 
 <div class="mt-4" style="color: #d4639a">
 
-Every step needs a check. Four levels of nesting for three functions.
+Every step needs a check. This is four levels of nesting for three functions.
 
-This does not scale.
+It gets worse. It always gets worse.
 
 </div>
 
@@ -94,7 +94,7 @@ This does not scale.
 
 # A Smarter Box: Maybe
 
-What if the box just handled it.
+What if the box just... handled it?
 
 <v-click>
 
@@ -127,7 +127,7 @@ Maybe(42).bind(get_user).bind(get_address).bind(get_postcode)
 
 <div style="color: #d4639a">
 
-The box handles the emptiness between steps. You don't have to think about it.
+The box handles the emptiness between steps. You just don't have to think about it. It's nice.
 
 </div>
 
@@ -137,7 +137,7 @@ The box handles the emptiness between steps. You don't have to think about it.
 
 # The Same Trick, Different Box: Lists
 
-What if the box has *multiple things in it*? Bind means: apply a function to each one, flatten the results.
+Ok but what if the box has *multiple things in it*? Bind means: apply a function to each one, flatten the results.
 
 <v-click>
 
@@ -168,7 +168,7 @@ Each `for` is a bind. The list box handles the iteration and combination for you
 
 <div class="mt-4" style="color: #9b72cf">
 
-Maybe handles missing values. List handles multiple values. Same interface. Same idea.
+Maybe handles missing values. List handles multiple values. Same interface, same idea. I know. I know. Stay with me.
 
 </div>
 
@@ -178,7 +178,7 @@ Maybe handles missing values. List handles multiple values. Same interface. Same
 
 # The Pattern
 
-So what do these have in common? Three ingredients:
+Right, so what do these have in common? Three ingredients:
 
 <v-clicks>
 
@@ -198,7 +198,7 @@ So what do these have in common? Three ingredients:
 
 <div class="mt-4" style="color: #d4639a">
 
-A box + wrap + bind. That's a monad. That's the whole thing.
+A box + wrap + bind. That's it. That's a monad. I'm not even being reductive, that's genuinely the whole thing.
 
 Where a class hides **state**, a monad hides **control flow**.
 
@@ -259,7 +259,7 @@ list(map(double, [5]))              # the same function, between lists
 
 The box doesn't change what the function does — it just lets it work on boxed values.
 
-Every monad is a functor. This is what <code>map</code> means.
+Every monad is a functor. This is what <code>map</code> means. It's honestly kind of beautiful.
 
 </div>
 
@@ -269,7 +269,7 @@ Every monad is a functor. This is what <code>map</code> means.
 
 # The Three Rules
 
-So what makes a box a *monad* and not just a box?
+Ok here's where it gets a bit formal. Sorry. What makes a box a *monad* and not just a box?
 
 <v-clicks>
 
@@ -288,7 +288,7 @@ So what makes a box a *monad* and not just a box?
 
 # The Result Monad
 
-Maybe has a problem — when something goes wrong, it just goes empty. Doesn't tell you *why*. Result fixes this.
+So Maybe has a problem — when something goes wrong it just... goes empty. Doesn't tell you *why*. This is annoying. Result fixes this.
 
 <v-click>
 
@@ -313,7 +313,7 @@ def bind(self, func):
 
 <div style="color: #d4639a">
 
-Same bind, same pattern — but now the error message comes along for the ride. No more silent failures.
+Same bind, same pattern — but now the error message comes along for the ride. No more silent failures. Thank god.
 
 </div>
 
@@ -360,7 +360,7 @@ result = (Result.ok("readings.csv")
 
 <div style="color: #9b72cf">
 
-Same logic, no nesting. If it fails, you know exactly where and why.
+Same logic, no nesting. If something breaks, it tells you what. Like software should have been doing this whole time, honestly.
 
 </div>
 
@@ -374,8 +374,8 @@ Same logic, no nesting. If it fails, you know exactly where and why.
 
 - Monads come from **category theory** — a branch of abstract maths
 - Haskell borrowed the concept in the 1990s for handling side effects
-- The ideas are genuinely simple. The vocabulary is not. This is a branding problem
-- Most people learn monads by using them, then go "oh. *that's* what that was"
+- The ideas are genuinely simple. The naming is genuinely terrible. This is a branding problem more than anything
+- Most people learn monads by using them, then go "oh wait, *that's* what that was?"
 
 </v-clicks>
 
@@ -385,7 +385,7 @@ Same logic, no nesting. If it fails, you know exactly where and why.
 
 You do not need category theory to use a monad.
 
-You need a box and a chain. That's it.
+You need a box and a chain. I promise.
 
 </div>
 
@@ -401,6 +401,12 @@ hideInToc: true
 <div class="mt-4 text-lg opacity-50">
 
 and chain operations on, without worrying about the plumbing
+
+</div>
+
+<div class="mt-4 text-sm opacity-40">
+
+I told you it wasn't that bad
 
 </div>
 
