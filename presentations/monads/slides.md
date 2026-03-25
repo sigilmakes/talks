@@ -44,6 +44,43 @@ hideInToc: true
 
 ---
 
+# Classes Are Boxes
+
+You already use boxes every day. A class wraps data and gives you methods to work with it.
+
+<v-click>
+
+```python
+class Box:
+    def __init__(self, value):
+        self.value = value           # put a thing in the box
+
+    def apply(self, func):
+        return Box(func(self.value)) # do something to what's inside
+```
+
+</v-click>
+
+<v-click>
+
+```python
+Box(5).apply(lambda x: x * 2)   # Box(10)
+```
+
+</v-click>
+
+<v-click>
+
+<div class="mt-4" style="color: #9b72cf">
+
+Simple enough. But what happens when the thing inside might not be there?
+
+</div>
+
+</v-click>
+
+---
+
 # The Problem
 
 Things go wrong. Values might be missing. And Python makes you deal with it manually.
@@ -68,100 +105,44 @@ if user is not None:
 
 Every step needs a check. It gets worse the more steps you have.
 
+What if the box could handle this for us?
+
 </div>
 
 </v-click>
 
 ---
 
-# What If We Had a Box?
+# A Smarter Box: Maybe
 
-Imagine a box that holds a value — but knows it might be empty.
-
-<v-click>
-
-```python
-box = Maybe(42)       # there's a 42 in here
-empty = Maybe(None)   # this one's empty
-```
-
-</v-click>
-
-<v-click>
-
-And imagine you could **chain** operations on it — and the box handles the "is it empty?" question *for you*.
-
-</v-click>
+What if our box *knew* it might be empty — and handled that automatically?
 
 <v-click>
 
 ```python
-result = Maybe(42).bind(get_user).bind(get_address).bind(get_postcode)
-# If any step comes back empty, the whole chain just gives you Nothing.
-# No ifs. No crashes.
-```
-
-</v-click>
-
----
-
-# You Already Use Boxes — They're Called Classes
-
-```python
-class Box:
+class Maybe:
     def __init__(self, value):
-        self.value = value           # put a thing in the box
+        self.value = value
 
-    def apply(self, func):
-        return Box(func(self.value)) # do something to what's inside
+    def bind(self, func):
+        if self.value is None:
+            return Maybe(None)    # empty? skip it
+        return func(self.value)   # otherwise, run the function
+
+    def __repr__(self):
+        return f"Maybe({self.value})"
 ```
-
-<v-click>
-
-```python
-Box(5).apply(lambda x: x * 2)   # Box(10)
-```
-
-A class **wraps data** and gives you **methods** to work with it.
 
 </v-click>
 
 <v-click>
 
-<div class="mt-4" style="color: #9b72cf">
-
-A monad is the same idea — but the method between steps handles the messy stuff *for you*.
-
-Where a class hides **state**, a monad hides **control flow**.
-
-</div>
-
-</v-click>
-
----
-
-# How Does the Box Work?
-
-Two rules:
-
-<v-clicks>
-
-1. **Put things in** — wrap a value in the box
-   - `Maybe(42)` → a box with 42 inside
-
-2. **Chain operations** — take a boxed value, apply a function, get a new box
-   - If the box has something → unwrap, apply the function, get a new box back
-   - If the box is empty → skip it, stay empty
-
-</v-clicks>
-
-<v-click>
-
 ```python
-def bind(self, func):
-    if self.value is None:
-        return Maybe(None)    # empty? pass it along
-    return func(self.value)   # otherwise, run the function
+def half(x):
+    return Maybe(x // 2) if x % 2 == 0 else Maybe(None)
+
+Maybe(16).bind(half).bind(half).bind(half)              # Maybe(2)
+Maybe(16).bind(half).bind(half).bind(half).bind(half)   # Maybe(None)
 ```
 
 </v-click>
@@ -170,7 +151,7 @@ def bind(self, func):
 
 <div style="color: #d4639a">
 
-That's it. That's a monad. A box with a way in and a way to chain.
+No ifs. No crashes. The box handles the emptiness between steps.
 
 </div>
 
@@ -178,34 +159,7 @@ That's it. That's a monad. A box with a way in and a way to chain.
 
 ---
 
-# Different Boxes, Different Plumbing
-
-The *pattern* is always the same. What changes is what the box handles for you.
-
-<v-clicks>
-
-| Box | What's Inside | What It Handles |
-|-----|--------------|----------------|
-| **Maybe / Optional** | A value that might be missing | Null checks |
-| **Result** | A value or an error | Error propagation |
-| **List** | Multiple values | Looping over combinations |
-| **IO** | A side effect waiting to happen | Keeping functions pure |
-
-</v-clicks>
-
-<v-click>
-
-<div class="mt-4" style="color: #9b72cf">
-
-You write the logic. The box handles the plumbing between steps.
-
-</div>
-
-</v-click>
-
----
-
-# The List Monad
+# The Same Trick, Different Box: Lists
 
 A list is a box that holds **multiple values at once**. Bind means: apply a function to each one, and flatten the results.
 
@@ -246,61 +200,31 @@ Maybe handles missing values. List handles multiple values. Same pattern.
 
 ---
 
-# A Python Example
+# The Pattern
 
-<v-click>
-
-```python
-class Maybe:
-    def __init__(self, value):
-        self.value = value
-
-    def bind(self, func):
-        if self.value is None:
-            return Maybe(None)
-        return func(self.value)
-
-    def __repr__(self):
-        return f"Maybe({self.value})"
-```
-
-</v-click>
-
-<v-click>
-
-```python
-def half(x):
-    return Maybe(x // 2) if x % 2 == 0 else Maybe(None)
-
-Maybe(16).bind(half).bind(half).bind(half)
-# Maybe(2)
-
-Maybe(16).bind(half).bind(half).bind(half).bind(half)
-# Maybe(None) — 1 is odd, chain stops cleanly
-```
-
-</v-click>
-
----
-
-# Why the Weird Name?
+So what do these boxes have in common? Three ingredients:
 
 <v-clicks>
 
-- Monads come from **category theory** — a branch of abstract maths
-- Haskell borrowed the concept in the 1990s for handling side effects
-- The *ideas* are simple; the *vocabulary* is intimidating
-- Most people learn monads by using them, then realise what they were
+1. **A box type** — wraps a value
+   - `Maybe(42)`, `[1, 2, 3]`
+
+2. **A way to put things in** — wrap a value in the box
+   - `Maybe(x)`, `[x]`
+
+3. **A way to chain** — `bind`: take a boxed value, apply a function, get a new box
+   - Maybe's bind skips if empty
+   - List's bind applies to each element and flattens
 
 </v-clicks>
 
 <v-click>
 
-<div class="mt-8 text-center text-xl" style="color: #d4639a">
+<div class="mt-4" style="color: #d4639a">
 
-You don't need the maths to use the pattern.
+A box + a way in + a way to chain. That's a monad.
 
-You just need a box and a chain.
+Where a class hides **state**, a monad hides **control flow**.
 
 </div>
 
@@ -389,6 +313,31 @@ What makes a box a *monad* and not just a box? Three rules:
 <div class="mt-4" style="color: #d4639a">
 
 These guarantee your chains are predictable. No weird surprises from ordering.
+
+</div>
+
+</v-click>
+
+---
+
+# Why the Weird Name?
+
+<v-clicks>
+
+- Monads come from **category theory** — a branch of abstract maths
+- Haskell borrowed the concept in the 1990s for handling side effects
+- The *ideas* are simple; the *vocabulary* is intimidating
+- Most people learn monads by using them, then realise what they were
+
+</v-clicks>
+
+<v-click>
+
+<div class="mt-8 text-center text-xl" style="color: #d4639a">
+
+You don't need the maths to use the pattern.
+
+You just need a box and a chain.
 
 </div>
 
