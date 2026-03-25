@@ -1,5 +1,5 @@
 ---
-title: What the hell is a Monad?
+title: what the hell is a Monad?
 info: |
   Code Club Talk — Willow Sparks
 
@@ -21,9 +21,10 @@ hideInToc: true
 download: true
 ---
 
-# What the hell is a Monad?
+# what the hell is a monad?
+A very professional presentation about boxes
 
-Willow Sparks · Code Club · 1 April 2026
+Willow Sparks · Code Club · April Fools
 
 ---
 layout: center
@@ -36,7 +37,7 @@ hideInToc: true
 
 <div class="mt-8 text-2xl" style="color: #d4639a">
 
-...I'm so sorry. let me start over.
+...let me start over.
 
 </div>
 
@@ -46,13 +47,13 @@ hideInToc: true
 layout: center
 ---
 
-# A monad is a box you can put things in.
+# a monad is a box you can put things in.
 
 <v-click>
 
 <div class="mt-8 text-lg opacity-70">
 
-I promise. We can go from here.
+much better
 
 </div>
 
@@ -89,6 +90,8 @@ this is horrible and I hate it and you should too.
 
 
 </div>
+
+<img src="./images/frieren.jpg" class="absolute bottom-8 right-8 h-36 rounded" />
 
 </v-click>
 
@@ -170,7 +173,9 @@ Maybe(42).bind(get_user).bind(get_address).bind(get_postcode)
 
 <div style="color: #d4639a">
 
-the box handles everything. we don't have to think about it. this is nice.
+the box handles everything. we don't have to think about it.
+
+head empty. this is nice.
 
 </div>
 
@@ -208,6 +213,8 @@ def bind(self, func):
 same bind, same pattern — but now the error message comes along for the ride. no more silent failures.
 
 </div>
+
+<img src="./images/frieren_smug.jpg" class="absolute bottom-8 right-8 h-36 rounded" />
 
 </v-click>
 
@@ -307,7 +314,7 @@ layout: center
 
 <div class="mt-8 text-xl">
 
-Each <code>for</code> is a bind. That's the list monad. You've been using it this whole time.
+each <code>for</code> is a bind. that's the List monad. you've been using it this whole time.
 
 </div>
 
