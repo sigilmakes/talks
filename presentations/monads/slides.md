@@ -115,7 +115,7 @@ THOUSANDS OF YEARS OF PROGRAMMING AND NO REAL WORLD USE FOUND FOR `if x is not N
 
 <div class="text-xl mt-4 opacity-80">
 
-WANTED TO CHAIN THREE FUNCTIONS TOGETHER ANYWAY FOR A LAUGH? WE HAD A TOOL FOR THAT
+WANTED TO CHAIN THREE FUNCTIONS TOGETHER? WE HAD A TOOL FOR THAT
 
 </div>
 
@@ -320,19 +320,12 @@ hideInToc: true
 
 <div class="text-center">
 
-<div class="text-4xl">
-
-🚨
-
-</div>
 
 # YOU HAVE BEEN USING MONADS THIS ENTIRE TIME
 
 <v-click>
 
 <div class="text-xl mt-8 opacity-80">
-
-NOBODY TOLD YOU
 
 </div>
 
@@ -342,7 +335,7 @@ NOBODY TOLD YOU
 
 <div class="text-xl mt-4 opacity-80">
 
-YOU WERE NOT CONSULTED
+excellent g
 
 </div>
 
@@ -480,47 +473,6 @@ You just compose them. They don't step on each other.
 </v-click>
 
 ---
-layout: center
-hideInToc: true
----
-
-<div class="text-center">
-
-# THEY JUST WORK TOGETHER
-
-<v-click>
-
-<div class="text-xl mt-8 opacity-80">
-
-NO CONFIGURATION. NO ADAPTER PATTERN. NO `AbstractMonadBridgeFactoryImpl`
-
-</div>
-
-</v-click>
-
-<v-click>
-
-<div class="text-xl mt-4 opacity-80">
-
-YOU JUST PUT A BOX INSIDE ANOTHER BOX
-
-</div>
-
-</v-click>
-
-<v-click>
-
-<div class="text-lg mt-8" style="color: #d4639a">
-
-unlike your codebase
-
-</div>
-
-</v-click>
-
-</div>
-
----
 
 # Why the Weird Name?
 
@@ -528,7 +480,7 @@ unlike your codebase
 
 - Monads come from **category theory** — a branch of abstract maths
 - Haskell borrowed the concept in the 1990s for handling side effects
-- The ideas are genuinely simple. The naming is genuinely terrible. This is a branding problem more than anything
+- The ideas are genuinely simple. The naming is genuinely terrible. This is a branding problem more than anything.
 - Most people learn monads by using them, then go "oh wait, *that's* what that was?"
 
 </v-clicks>
@@ -601,6 +553,39 @@ Classes hide **what's inside**. Monads hide **what happens between steps**.
 
 ---
 
+# What If You Just... Didn't Have Variables?
+
+In Haskell, there's no mutable state. No variables. Just functions and values.
+
+<v-click>
+
+So how do you do anything?
+
+</v-click>
+
+<v-clicks>
+
+- Need to read a file? **IO monad** — side effects live in a box
+- Need to track state? **State monad** — state gets threaded through the chain
+- Need randomness? **monad** — the random seed is just state in a box
+- Need to print something? That's IO. **That's a monad too**
+
+</v-clicks>
+
+<v-click>
+
+<div class="mt-4" style="color: #d4639a">
+
+Haskell doesn't have variables. It has boxes. It's monads all the way down.
+
+This either makes you want to learn Haskell or never touch it. Both are valid.
+
+</div>
+
+</v-click>
+
+---
+
 # Why Not Just Use Classes?
 
 You *can* solve these problems with classes. People do. It gets messy.
@@ -626,7 +611,7 @@ Result.ok("data.csv").bind(read_csv).bind(validate).bind(log)
 
 No inheritance tree. No diamond problem. No `AsyncLoggedValidatedSafeCSVReaderFactory`.
 
-Rust doesn't even *have* inheritance. It uses `Result` and `Option` — monadic types — instead. It's fine. It's better, actually.
+Rust doesn't even *have* inheritance. It uses monadic types instead. It's fine. It's better, actually.
 
 </v-click>
 
