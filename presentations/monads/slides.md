@@ -377,13 +377,13 @@ What if you have multiple files and each one might fail?
 ```python
 files = ["data1.csv", "data2.csv", "data3.csv"]
 
-results = [
-    Result.ok(f)
+def process(filename):
+    return (Result.ok(filename)
         .bind(read_csv)
         .bind(lambda d: parse_floats(d, "temperature"))
-        .bind(mean)
-    for f in files
-]
+        .bind(mean))
+
+results = List(files).bind(process)
 # [Ok(23.4), Err("file not found: data2.csv"), Ok(19.1)]
 ```
 
