@@ -431,7 +431,9 @@ A **functor** takes a function between values and lifts it to a function between
 
 <v-click>
 
-An **endofunctor** is a functor from a category to itself — our boxes map Python types to Python types. A **monoid** is something with an identity and an associative operation — that's our three rules.
+An **endofunctor** is a functor from a category to itself — our boxes map Python types to Python types.
+
+A **monoid** is something with an identity and an associative operation — that's our three rules.
 
 </v-click>
 
