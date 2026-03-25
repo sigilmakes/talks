@@ -188,7 +188,7 @@ So what do these boxes have in common? Three ingredients:
 2. **Wrap** — put a value in the box, written $\text{wrap}(x)$
    - `Maybe(x)`, `[x]`
 
-3. **Bind** — chain operations on the box, written $m \gg\!= f$
+3. **Bind** — chain operations on a box $m$ with a function $f$, written $m \gg\!= f$
    - Maybe's bind skips if empty
    - List's bind applies to each element and flattens
 
