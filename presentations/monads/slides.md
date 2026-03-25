@@ -525,7 +525,7 @@ hideInToc: true
 
 <div class="text-xl mt-8 opacity-80">
 
-"I NEED A BANANA" → HERE IS A GORILLA HOLDING A BANANA AND THE ENTIRE JUNGLE
+THOUSANDS OF YEARS OF OOP AND NO REAL WORLD USE FOUND FOR `AbstractSingletonProxyFactoryBean`
 
 </div>
 
@@ -533,9 +533,9 @@ hideInToc: true
 
 <v-click>
 
-<div class="text-lg mt-8 opacity-60">
+<div class="text-xl mt-4 opacity-80">
 
-— Joe Armstrong, creator of Erlang
+WANTED YOUR CSV READER TO ALSO LOG? THAT'LL BE FOUR SUBCLASSES. COME TO YOUR SENSES
 
 </div>
 
