@@ -269,26 +269,23 @@ Every monad is a functor. This is what <code>map</code> means.
 
 # The Three Rules
 
-What makes a box a *monad* and not just a box? Three rules:
+What makes a box a *monad* and not just a box?
 
 <v-clicks>
 
-1. **Wrapping then chaining does nothing extra** — if you put a value in a box and immediately chain a function, it's the same as just calling the function
-   - *Putting something in a box shouldn't change it*
-
-2. **Chaining with "just re-wrap it" does nothing** — if your chain function just puts the value back in a box, you get the same box
-   - *The box shouldn't add anything you didn't ask for*
-
-3. **Chaining is associative** — it doesn't matter how you group a sequence of chains, the result is the same
-   - *Like how (1+2)+3 = 1+(2+3)*
+1. **Wrapping then chaining** = just calling the function
+2. **Chaining with "just re-wrap it"** = doing nothing
+3. **Chaining is associative** — grouping doesn't matter
 
 </v-clicks>
 
 <v-click>
 
-<div class="mt-4" style="color: #d4639a">
+<div class="mt-8" style="color: #d4639a">
 
-These guarantee your chains are predictable. No weird surprises from ordering.
+Same idea as arithmetic: putting 0 in shouldn't change anything, and (1+2)+3 = 1+(2+3).
+
+These guarantee your chains compose predictably.
 
 </div>
 
