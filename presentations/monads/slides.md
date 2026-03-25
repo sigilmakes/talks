@@ -368,6 +368,45 @@ Same logic, no nesting. If something breaks, it tells you what. Like software sh
 
 ---
 
+# Composing Monads
+
+What if you have multiple files and each one might fail?
+
+<v-click>
+
+```python
+files = ["data1.csv", "data2.csv", "data3.csv"]
+
+results = [
+    Result.ok(f)
+        .bind(read_csv)
+        .bind(lambda d: parse_floats(d, "temperature"))
+        .bind(mean)
+    for f in files
+]
+# [Ok(23.4), Err("file not found: data2.csv"), Ok(19.1)]
+```
+
+</v-click>
+
+<v-click>
+
+List handles the iteration. Result handles the errors. Each one does its job.
+
+</v-click>
+
+<v-click>
+
+<div class="mt-4" style="color: #d4639a">
+
+You just compose them. They don't step on each other.
+
+</div>
+
+</v-click>
+
+---
+
 # Why the Weird Name?
 
 <v-clicks>
