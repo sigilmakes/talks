@@ -93,6 +93,47 @@ This is horrible and I hate it and you should too.
 </v-click>
 
 ---
+layout: center
+hideInToc: true
+---
+
+<div class="text-center">
+
+# STOP DOING NULL CHECKS
+
+<v-click>
+
+<div class="text-xl mt-8 opacity-80">
+
+THOUSANDS OF YEARS OF PROGRAMMING AND NO REAL WORLD USE FOUND FOR `if x is not None`
+
+</div>
+
+</v-click>
+
+<v-click>
+
+<div class="text-xl mt-4 opacity-80">
+
+WANTED TO CHAIN THREE FUNCTIONS TOGETHER ANYWAY FOR A LAUGH? WE HAD A TOOL FOR THAT
+
+</div>
+
+</v-click>
+
+<v-click>
+
+<div class="text-2xl mt-8" style="color: #d4639a">
+
+IT WAS CALLED A MONAD
+
+</div>
+
+</v-click>
+
+</div>
+
+---
 
 # A Smarter Box: Maybe
 
