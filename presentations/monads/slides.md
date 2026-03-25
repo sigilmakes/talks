@@ -487,7 +487,7 @@ Composition over inheritance. The box doesn't need to know about the other boxes
 </v-click>
 
 <v-click at="1">
-<img src="./images/ryuko_concern.jpg" class="absolute bottom-8 right-12 h-32 rounded" />
+<img src="./images/ryuko_concern.jpg" class="absolute top-32 right-8 h-32 rounded" />
 </v-click>
 
 ---
