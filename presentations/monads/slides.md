@@ -314,6 +314,53 @@ Each <code>for</code> is a bind. That's the list monad. You've been using it thi
 </v-click>
 
 ---
+layout: center
+hideInToc: true
+---
+
+<div class="text-center">
+
+<div class="text-4xl">
+
+🚨
+
+</div>
+
+# YOU HAVE BEEN USING MONADS THIS ENTIRE TIME
+
+<v-click>
+
+<div class="text-xl mt-8 opacity-80">
+
+NOBODY TOLD YOU
+
+</div>
+
+</v-click>
+
+<v-click>
+
+<div class="text-xl mt-4 opacity-80">
+
+YOU WERE NOT CONSULTED
+
+</div>
+
+</v-click>
+
+<v-click>
+
+<div class="text-lg mt-8" style="color: #d4639a">
+
+anyway let's talk about the pattern
+
+</div>
+
+</v-click>
+
+</div>
+
+---
 
 # The Pattern
 
@@ -348,10 +395,35 @@ Where a class hides **state**, a monad hides **control flow**.
 </v-click>
 
 ---
+layout: center
+hideInToc: true
+---
+
+<div class="text-center">
+
+<div class="text-lg opacity-60">
+
+ok we need to get a bit serious for a second
+
+</div>
+
+<v-click>
+
+<div class="text-lg mt-4 opacity-60">
+
+sorry
+
+</div>
+
+</v-click>
+
+</div>
+
+---
 
 # The Three Rules
 
-Ok here's where it gets a bit formal. Sorry. What makes a box a *monad* and not just a box?
+What makes a box a *monad* and not just a box? What makes a box a *monad* and not just a box?
 
 <v-clicks>
 
@@ -406,6 +478,47 @@ You just compose them. They don't step on each other.
 <img src="./images/nonon_tea.jpeg" class="absolute bottom-8 right-12 h-28 rounded" />
 
 </v-click>
+
+---
+layout: center
+hideInToc: true
+---
+
+<div class="text-center">
+
+# THEY JUST WORK TOGETHER
+
+<v-click>
+
+<div class="text-xl mt-8 opacity-80">
+
+NO CONFIGURATION. NO ADAPTER PATTERN. NO `AbstractMonadBridgeFactoryImpl`
+
+</div>
+
+</v-click>
+
+<v-click>
+
+<div class="text-xl mt-4 opacity-80">
+
+YOU JUST PUT A BOX INSIDE ANOTHER BOX
+
+</div>
+
+</v-click>
+
+<v-click>
+
+<div class="text-lg mt-8" style="color: #d4639a">
+
+unlike your codebase
+
+</div>
+
+</v-click>
+
+</div>
 
 ---
 
@@ -530,6 +643,47 @@ Composition over inheritance. The box doesn't need to know about the other boxes
 <v-click at="1">
 <img src="./images/ryuko_concern.jpg" class="absolute top-32 right-8 h-32 rounded" />
 </v-click>
+
+---
+layout: center
+hideInToc: true
+---
+
+<div class="text-center">
+
+# STOP DOING INHERITANCE
+
+<v-click>
+
+<div class="text-xl mt-8 opacity-80">
+
+THOUSANDS OF YEARS OF OOP AND NO REAL WORLD USE FOUND FOR `class Dog(Animal)`
+
+</div>
+
+</v-click>
+
+<v-click>
+
+<div class="text-xl mt-4 opacity-80">
+
+"I NEED A BANANA" → HERE IS A GORILLA HOLDING A BANANA AND THE ENTIRE JUNGLE
+
+</div>
+
+</v-click>
+
+<v-click>
+
+<div class="text-lg mt-8" style="color: #d4639a">
+
+composition won. it's over. go home
+
+</div>
+
+</v-click>
+
+</div>
 
 ---
 
