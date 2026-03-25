@@ -286,11 +286,46 @@ What makes a box a *monad* and not just a box?
 
 ---
 
-# A Real Example: Processing Experimental Data
+# The Result Monad
 
-Without monads — every step needs its own check:
+Maybe tells you *something* went wrong. Result tells you *what*.
 
 <v-click>
+
+Two states:
+- `Ok(value)` — it worked, here's the answer
+- `Err(message)` — it failed, here's why
+
+</v-click>
+
+<v-click>
+
+```python
+def bind(self, func):
+    if self.is_err:
+        return self               # failed? carry the error forward
+    return func(self.value)       # otherwise, keep going
+```
+
+</v-click>
+
+<v-click>
+
+<div style="color: #d4639a">
+
+Same pattern as Maybe — but instead of silently going empty, the error message travels with the box.
+
+</div>
+
+</v-click>
+
+---
+
+# Putting It Together: A Data Pipeline
+
+<v-click>
+
+Without monads:
 
 ```python
 data = read_csv("readings.csv")
@@ -308,7 +343,7 @@ if data is not None:
 
 <v-click>
 
-With Result — the box handles it, *and* tells you what went wrong:
+With Result:
 
 ```python
 result = (Result.ok("readings.csv")
@@ -316,8 +351,18 @@ result = (Result.ok("readings.csv")
     .bind(lambda d: parse_floats(d, "temperature"))
     .bind(remove_outliers)
     .bind(mean))
-# Either Ok(23.4) or Err("no data left after removing outliers")
+# Ok(23.4) or Err("column 'temperature' contains non-numeric values")
 ```
+
+</v-click>
+
+<v-click>
+
+<div style="color: #9b72cf">
+
+Same logic, no nesting. And if it fails, you know exactly where and why.
+
+</div>
 
 </v-click>
 
