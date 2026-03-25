@@ -205,33 +205,42 @@ You write the logic. The box handles the plumbing between steps.
 
 ---
 
-# You Already Use These
+# The List Monad
+
+A list is a box that holds **multiple values at once**. Bind means: apply a function to each one, and flatten the results.
 
 <v-click>
 
-### JavaScript Promises
+```python
+def expand(x):
+    return [x, x * 10]
 
-```javascript
-fetch('/api/user')
-  .then(res => res.json())       // chain
-  .then(user => fetch(user.url)) // chain
-  .then(res => res.json())       // chain
+# bind: apply to each element, flatten
+[1, 2, 3]  →  expand each  →  [1, 10, 2, 20, 3, 30]
 ```
-
-`.then()` is bind. Promise is the box. You've been using a monad.
 
 </v-click>
 
 <v-click>
 
-### Python list comprehensions
+You already do this — it's a list comprehension:
 
 ```python
 [(x, y) for x in [1, 2, 3] for y in ['a', 'b']]
 # [(1,'a'), (1,'b'), (2,'a'), (2,'b'), (3,'a'), (3,'b')]
 ```
 
-Nested iteration where each step depends on the last? That's list monad bind.
+Each `for` is a bind. The list box handles the iteration and combination for you.
+
+</v-click>
+
+<v-click>
+
+<div class="mt-4" style="color: #9b72cf">
+
+Maybe handles missing values. List handles multiple values. Same pattern.
+
+</div>
 
 </v-click>
 
