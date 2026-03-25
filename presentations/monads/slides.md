@@ -610,6 +610,8 @@ so how do you do anything?
 
 Haskell doesn't have variables. it has boxes. it's monads all the way down.
 
+<img src="./images/teto.jpg" class="absolute bottom-8 right-8 h-32 rounded" />
+
 **(This is why I thought last week's code club challenged was unfair. Imagine doing python without variables)**
 
 </div>
