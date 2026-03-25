@@ -43,37 +43,16 @@ hideInToc: true
 </v-click>
 
 ---
+layout: center
+---
 
-# Classes Are Boxes
-
-You already use boxes every day. A class wraps data and gives you methods to work with it.
-
-<v-click>
-
-```python
-class Box:
-    def __init__(self, value):
-        self.value = value           # put a thing in the box
-
-    def apply(self, func):
-        return Box(func(self.value)) # do something to what's inside
-```
-
-</v-click>
+# A monad is a box you can put things in.
 
 <v-click>
 
-```python
-Box(5).apply(lambda x: x * 2)   # Box(10)
-```
+<div class="mt-8 text-lg opacity-70">
 
-</v-click>
-
-<v-click>
-
-<div class="mt-4" style="color: #9b72cf">
-
-Simple enough. But what happens when the thing inside might not be there?
+That's it. That's the starting point. Let's unpack it.
 
 </div>
 
