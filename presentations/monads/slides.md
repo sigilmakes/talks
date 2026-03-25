@@ -286,6 +286,43 @@ What makes a box a *monad* and not just a box?
 
 ---
 
+# A Real Example: Processing Experimental Data
+
+Without monads — every step needs its own check:
+
+<v-click>
+
+```python
+data = read_csv("readings.csv")
+if data is not None:
+    column = parse_floats(data, "temperature")
+    if column is not None:
+        cleaned = remove_outliers(column)
+        if cleaned is not None:
+            result = mean(cleaned)
+            if result is not None:
+                print(f"Mean temperature: {result}")
+```
+
+</v-click>
+
+<v-click>
+
+With Maybe — the box handles it:
+
+```python
+result = (Maybe("readings.csv")
+    .bind(read_csv)
+    .bind(lambda d: parse_floats(d, "temperature"))
+    .bind(remove_outliers)
+    .bind(mean))
+# Either Maybe(23.4) or Maybe(None) — no pyramid, no crashes
+```
+
+</v-click>
+
+---
+
 # Why the Weird Name?
 
 <v-clicks>
