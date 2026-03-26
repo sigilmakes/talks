@@ -123,8 +123,11 @@ class Maybe:
 <v-click>
 
 ```python
-# Same example as before but now the box handles the None checks
+# these functions now return Maybe instead of bare values
 Maybe(42).bind(get_user).bind(get_address).bind(get_postcode)
+
+# get_user(42) returns Maybe(user) or Maybe(None)
+# if any step returns Maybe(None), the chain stops
 ```
 
 </v-click>
@@ -229,7 +232,7 @@ class List:
     def bind(self, func):
         result = []
         for item in self.values:
-            result.extend(func(item))   # apply, then flatten
+            result.extend(func(item).values)  # apply, then flatten
         return List(result)
 ```
 
@@ -336,8 +339,8 @@ def process(filename):
         .bind(lambda d: parse_floats(d, "temperature"))
         .bind(mean))
 
-results = List(files).bind(process)
-# [Ok(23.4), Err("file not found: data2.csv"), Ok(19.1)]
+results = List(files).map(process)
+# List([Ok(23.4), Err("file not found: data2.csv"), Ok(19.1)])
 ```
 
 <img src="./images/tea.jpeg" class="absolute bottom-8 right-12 h-28 rounded" />
