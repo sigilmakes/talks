@@ -159,7 +159,7 @@ def bind(self, func):
     if self.is_err:
         return self
     try:
-        return Result.ok(func(self.value))
+        return Result(func(self.value))
     except Exception as e:
         return Result.err(str(e))
 ```
@@ -203,12 +203,12 @@ if data is not None:
 with Result:
 
 ```python
-result = (Result.ok("readings.csv")
+result = (Result("readings.csv")
     .bind(read_csv)
     .bind(lambda d: parse_floats(d, "temperature"))
     .bind(remove_outliers)
     .bind(mean))
-# Ok(23.4) or Err("column 'temperature' contains non-numeric values")
+# Result(23.4) or Err("column 'temperature' contains non-numeric values")
 ```
 
 <img src="./images/frieren.jpg" class="absolute bottom-4 right-20 h-32 rounded" />
@@ -333,7 +333,7 @@ what if you have multiple files and each one might fail?
 files = ["data1.csv", "data2.csv", "data3.csv"]
 
 def process(filename):
-    return (Result.ok(filename)
+    return (Result(filename)
         .bind(read_csv)
         .bind(lambda d: parse_floats(d, "temperature"))
         .bind(mean))
@@ -412,7 +412,7 @@ class AsyncLoggedValidatedCSVReader(LoggedValidatedCSVReader):  # OH NO
 monads compose through **chaining**, not inheritance.
 
 ```python
-Result.ok("data.csv").bind(read_csv).bind(validate).bind(log)
+Result("data.csv").bind(read_csv).bind(validate).bind(log)
 ```
 
 no `AsyncLoggedValidatedSafeCSVReaderFactory`.
