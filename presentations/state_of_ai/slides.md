@@ -336,17 +336,18 @@ The agent alternates between **reasoning** and **acting**
 
 
 ---
+layout: two-cols-header
 hideInToc: true
 ---
 
 # A Computer for the Computer
 
-- LLMs have limited context windows and no persistent memory
+::left::
 
-- But with tools, an agent can:
-  - Write ideas, plans, and learnings to files
-  - Read those files later
-  - Execute programs
+LLMs have limited context windows, no persistent memory. But with tools, an agent can:
+  - Write ideas, plans, and learnings to files ("programs")
+  - Read those "programs" later
+  - Execute these "programs"
   - Save the results
 
 <span style="color: #955438">
@@ -354,6 +355,11 @@ hideInToc: true
 ## An agent is *a computer for the computer*
 
 </span>
+
+::right::
+
+![Harness](./images/harness.jpeg)
+
 
 ---
 layout: statement
