@@ -65,8 +65,7 @@ body,
   opacity: 0.28;
 }
 
-.slidev-layout.cover,
-.slidev-layout.statement {
+.slidev-layout.cover {
   background-color: #2E2D62;
   background-image:
     radial-gradient(circle at top, rgba(0, 167, 136, 0.18), transparent 18rem),
@@ -74,8 +73,7 @@ body,
   color: #FFFFFF;
 }
 
-.slidev-layout.cover::before,
-.slidev-layout.statement::before {
+.slidev-layout.cover::before {
   display: none;
 }
 
@@ -88,8 +86,7 @@ h1,
   line-height: 0.95;
 }
 
-.slidev-layout.cover h1,
-.slidev-layout.statement h1 {
+.slidev-layout.cover h1 {
   color: #00A788;
 }
 
@@ -289,6 +286,15 @@ hideInToc: true
 
 
 ---
+layout: statement
+---
+
+# What is an agent?
+
+
+---
+hideInToc: true
+---
 
 # What is an Agent?
 
@@ -297,15 +303,11 @@ hideInToc: true
 - The harness exposes tools, which are just programs: bash, editors, search, APIs
 - *Anything you can do on a computer, an agent can probably also do*
 
-<v-click>
-
 ```bash
 > "List the files in my folder"
 [llm-with-bash]$ ls .
 MyFolder/ file.txt
 ```
-
-</v-click>
 
 
 ---
@@ -315,8 +317,6 @@ hideInToc: true
 # The Loop
 
 The agent alternates between **reasoning** and **acting**
-
-<v-click>
 
 ```bash {lines:true}
 > "Write a Python script that models exponential growth"
@@ -332,27 +332,16 @@ The agent alternates between **reasoning** and **acting**
 (response)    "Done. Want me to run or plot it?"
 ```
 
-</v-click>
-
-<v-click>
-
 **TL;DR: an agent is an LLM with tools in a loop**
-
-</v-click>
 
 
 ---
-layout: two-cols-header
 hideInToc: true
 ---
 
 # A Computer for the Computer
 
-::left::
-
 - LLMs have limited context windows and no persistent memory
-
-<v-click>
 
 - But with tools, an agent can:
   - Write ideas, plans, and learnings to files
@@ -360,32 +349,25 @@ hideInToc: true
   - Execute programs
   - Save the results
 
-</v-click>
-
-<v-click>
 <span style="color: #955438">
 
 ## An agent is *a computer for the computer*
 
 </span>
-</v-click>
 
-::right::
+---
+layout: statement
+---
 
-<v-click at="1">
+# What's the point?
 
-![Harness](./images/harness.jpeg)
-
-</v-click>
-
-
+---
+hideInToc: true
 ---
 
 # What can agents do?
 
-An AI agent with access to your code repo can:
-
-<v-clicks>
+An AI agent with access to your computer can:
 
 - Understand an entire codebase and write documentation
 - Design and implement new features
@@ -393,8 +375,6 @@ An AI agent with access to your code repo can:
 - Profile performance and find optimisations
 - Improve code quality, check for bugs, fix security vulnerabilities
 - Prepare simulations, run them and then reason about the outputs
-
-</v-clicks>
 
 
 ---
@@ -408,13 +388,8 @@ In the past 4 months:
 - Built a data archival system for cryo-EM datasets (and then ported it to Rust in an afternoon)
 - Built a Kubernetes-based web app with nice UI for sandboxed agents in the cloud (in ~2 days)
 - Built a recursive-language-model system based on A. Zhang's paper [(Link)](https://arxiv.org/abs/2512.24601)
-- Identified optimisations for a GPU-based electron integrator
-- Built a few multi-agent "orchestration" systems (GUI, CLI etc)
-- Developed a 4D game with ECS and physics
-- Built various extensions and plugins for software I use daily
-- Built a fully autonomous openclaw clone from scratch that plays text adventures and continuously "learns" over months
-
-- and more :)
+- Built various CLI/GUI tools+extensions, improved all my code quality, built web apps...
+- ...and much much more, with barely any manual coding.
 
 ---
 hideInToc: true
@@ -424,97 +399,180 @@ hideInToc: true
 
 Agents *can* do all these things. They're not magically good at it.
 
-<v-clicks>
-
 - The output is only as good as what goes in
 - Problems aren't solved through one-shot prompting
 - You need to teach the agent about the problem
 - You need to understand what the agent is doing!!
 - **Treat agents as a colleague you need to teach**
 
-</v-clicks>
-
 
 ---
-
-# How to use agents
-
-<v-clicks>
-
-- Before doing any work, ask the agent to **explore your project**
-- Talk to it about what you want
-  - Small task? Let it run
-  - Big task? Build a plan together. Have a dialogue.
-- Review the output. If there's too much, set up a reviewer agent
-- Build structure: git history, reports, kanban boards
-
-</v-clicks>
-
-<v-click>
-
-### Don't overthink it. Just talk to it.
-
-</v-click>
-
-
+hideInToc: true
 ---
 
 # Can an agent help with my research?
 
 ## Yes
 
-<v-clicks>
-
 - It probably knows more than you think (e.g. DFT, common simulation methods)
 - If it doesn't know something, it can search for and learn the relevant literature
 - It can build itself a "memory" — documents about your specific problem
 - If it still doesn't know, **you can teach it**
 
-</v-clicks>
+---
+hideInToc: true
+---
+
+# Agents can help with the pain of science
+
+- **Legacy codebases:** fix dependency hell of old projects, refactor legacy code, improve testing frameworks, debugging arcane code
+- **Optimisation:** GPU porting, language porting, parallelisation etc.
+- **Documentation:** automatic documentation of old projects
+- **Data management:** clean out files, perform data analysis, generate plots, etc.
+- **Research support:** search literature, monitor for new research, discussing ideas
+- **Research:** managing slurm jobs, running simulations, proposing experiments
 
 
 ---
+layout: statement
+---
 
-# Design Patterns
-
-A few things worth thinking about when working with agents:
-
-<v-clicks>
-
-- **Memory**: agents forget everything between sessions. How do we fix that?
-- **Tools**: how does an agent use software beyond bash?
-- **Parallelism**: when should we run multiple agents at once?
-- **Scheduling**: how do we get an agent to work continuously?
-- **Security**: how do we control what the agent can do?
-
-</v-clicks>
+# Getting started
 
 
 ---
 hideInToc: true
 ---
 
-# Memory - RAG
+# How to work with agents
 
-Agents don't remember anything between context windows. But they can write things down.
+- Before doing any work, ask the agent to **explore your project**
+- Small task? Let it run. Big task? Build a plan together. Have a dialogue.
+- Review the output. If there's too much, set up a reviewer agent
+- Build structure: git history, reports, kanban boards
 
-<v-clicks>
+### Don't overthink it. Just talk to it.
 
-- **Agentic RAG** = give the agent `grep`
-- Advanced RAG: vector databases, BM25 search etc.
-- [qmd](https://github.com/tobi/qmd) is an excellent tool for letting agents search through documents
 
-</v-clicks>
+---
+hideInToc: true
+---
 
-<v-click>
+# Things to keep in mind
 
-## Two principles
+1) **Stay involved with your work.**
+    - Agents can work faster than you, but they are also sloppy.
 
-1. **Progressive disclosure** — don't stuff everything into one file
-2. **Forgetting** — prune and consolidate stale information
-3. **Maintenance** - remembering and forgetting needs to be an active, guided process.
+2) **Write things down**
+    - The agent can only help if it can access the information it needs
 
-</v-click>
+3) **Focus on one thing at a time**
+    - Agents can work on twenty things at once, but can you process that?
+
+4) **Keep things simple**
+    - An agent can build a GUI in minutes, great! *Do you need one?*
+
+5) **Use agents to make you better, not to be a slop cannon**
+
+---
+layout: statement
+hideInToc: true
+---
+
+# Agents remove all friction 
+## You still need friction to guide you
+### *You* need to be the friction
+
+---
+hideInToc: true
+---
+
+# Getting started
+
+Various options:
+
+- **Claude, Codex, Google Antigravity, Github Copilot, Cursor:** Frontier AI
+- **Opencode, Amp, Droid:** Third-party harnesses with multi-model support.
+- **Openclaw, Nemoclaw, Hermes:** Personal long-running AI agents that evolve over time
+- **Pi:** Minimal but extensible harness. Also an SDK for building your own agent. We use this!
+
+
+---
+hideInToc: true
+---
+
+# Local models
+
+"Local" models aren't really there yet, but they do have use:
+
+- **Google Gemma 4 and Qwen 3.5:** Fit on phones, laptops and consumer-grade GPUs.
+- **Qwen3-Coder-Next, Qwen3.5 120b, gpt-oss-120b:** Work well with larger VRAM budgets (~96GB)
+- **MiniMax M2.7:** Frontier model, but you need at least 128-256GB. Best for heavy unified memory
+
+Small models can be used for automating small tasks, for larger problems you'll need larger models. Experiment with them!
+
+---
+hideInToc: true
+---
+
+# Helpful Tools
+You probably already use some of these
+
+### Software
+
+- **Obsidian:** Notes, kanband boards, knowledge bases etc. Works as an agent's memory
+- **Linear / GitHub Issues:** Work tracking
+- **Docker:** sandboxes, reproducibility, throwaway environments
+- **qmd:** let agents search your documents properly
+- **tmux:** interactive CLIs, debuggers, long-running agent sessions
+
+### Other stuff
+
+- **MCP:** connect agents to external services and APIs
+- **Skills:** reusable prompts for workflows, using software etc.
+
+### Ask the agent what tools would help! It probably knows
+
+---
+layout: statement
+---
+
+# Agentic Design Patterns
+
+---
+hideInToc: true
+---
+
+# Design Patterns
+Things to think about:
+
+- **Memory:** agents forget everything between sessions. How do we fix that?
+- **Tools:** how does an agent use our software?
+- **Parallelism:** how do we run multiple agents at once, and when should we?
+- **Scheduling:** how do we get an agent to work continuously?
+- ***Security:*** how do we control what the agent can do?
+
+Lots of problems to solve here! But they're largely just traditional engineering.
+
+---
+hideInToc: true
+---
+
+# Memory
+
+Agents don't remember anything between context windows.
+
+But they can write things down, and then later retrieve that information. This is called *Agentic* RAG (Retrieval Augmented Generation).
+
+- Just give the agent `grep`
+- Use vector databases, graph databases, BM25 search etc.
+- [qmd](https://github.com/tobi/qmd) is an excellent tool for letting agents search through documents which combines a lot of this
+
+## Important principles
+
+1. **Progressive disclosure:** don't stuff everything into one file. Organise into files, folders etc.
+2. **Forgetting:** Prune and consolidate stale information
+3. **Maintenance:** Remembering and forgetting needs to be an active, guided process
 
 
 ---
@@ -522,47 +580,40 @@ hideInToc: true
 ---
 
 # Tools & Software
-
-<v-clicks>
+If this interests you, look into MCP, ACP and agent skills.
 
 ## Traditional software
 
 - The best thing you can do: **make a CLI and document it**
-- Need a to talk to the web server? Document the API!
+- Need to talk to the web server? Document the API or make an "MCP server"
 - **Prefer text-in / text-out interfaces**
-- APIs, MCP, GUI automation are all useful, but CLI-first is usually right
-- Good documentation is all you need! ...and the code
 
-If you want agents to use your software, make a CLI!
+If you want agents to use your software, make a CLI.
 
-</v-clicks>
+## Agentic software
+Embedding an agent *inside* your software. Think beyond a chat box:
 
-
-<v-clicks>
-
-## Agentic Software
-
-- Embedding an agent *inside* your software
-- Think beyond a chat box. Buttons can map to repeatable prompts. Agents can program UI in real time.
-- Look into ACP (Agent Communication Protocol) if this interests you
-
-</v-clicks>
-
+- Buttons can map to repeatable prompts.
+- Agents can program UI in real time!
 
 ---
 hideInToc: true
 ---
 
 # Parallelism
+Ahmdal's law still applies
 
-- An agent can do a lot, but there *is* a limit.
-- As context windows fill up, an agent's performance degrades. 
-- Splitting tasks among agents helps mitigate this "context rot".
-- As with parallel computing, this should scale to the task.
+- A single agent can do a *lot*, but there is a limit.
+- Context windows aren't RAM. As context fills up, the agent's output degrades.
+- Splitting tasks among agents mitigates this "context rot".
 
-## Handwavey guide:
-- Couple thousand lines of code can be handled by one agent
-    
+## Scaling to the task
+
+- A single agent can handle a few thousand lines of code by itself fine
+- But parallel agents can work on frontend/backend at the same time
+- Agents can play different roles.
+
+
 ---
 hideInToc: true
 ---
@@ -575,8 +626,9 @@ hideInToc: true
     <h2>Implementer ↔ Reviewer</h2>
     <p>One agent builds, another checks.</p>
     <ul>
-      <li>Agents can miss things if they self-critique, external feedback is better!</li>
+      <li>Agents can miss things if they self-critique, external feedback is better</li>
       <li>Separation of responsibilities is key</li>
+      <li>Great default pattern for real work</li>
     </ul>
   </div>
 
@@ -626,7 +678,7 @@ hideInToc: true
     <ul>
       <li>The lead owns the plan, the workers own their scope</li>
       <li>This works well for independent tasks, but is a nasty trap for tightly coupled work</li>
-      <li>Works best for exploring large codebases, web browsing, porting code etc. </li>
+      <li>Works best for exploring large codebases, web browsing, porting code etc.</li>
     </ul>
   </div>
 
@@ -678,7 +730,7 @@ hideInToc: true
     <ul>
       <li>Most flexible but also most chaotic</li>
       <li>Needs proper thread management</li>
-      <li>Use when the problem genuinely requires collaboration, not just division of labour.</li>
+      <li>Use when the problem genuinely requires collaboration, not just division of labour</li>
     </ul>
   </div>
 
@@ -722,64 +774,94 @@ hideInToc: true
 hideInToc: true
 ---
 
-# Security
+# Security and Reliability
 
-<v-clicks>
+## Headline dangers:
 
-- Give the agent the minimum tools it needs
-- Separate read-only analysis from destructive actions
-- Sandbox risky work: containers, worktrees, throwaway credentials
-- Keep logs, git history, and reports — make actions auditable
-- Assume mistakes will happen. Review before deploying anything important.
+- Prompt injection!
+- Misalignment! 
+- Agent = RCE!
 
-</v-clicks>
+These are real dangers, and require using reliably safe LLMs.
 
+## More mundane problems:
 
----
-
-# Getting started
-
-<v-clicks>
-
-1. Pick one annoying, low-risk task
-2. Let the agent explore and explain your project back to you
-3. Give it tests, examples, and clear success criteria
-4. Start with planning, refactors, and docs before high-stakes work
-5. Add structure: commits, reports, review
-6. Increase autonomy as trust is earned
-
-</v-clicks>
+- Preventing API keys, ssh keys etc. entering context or being pushed to github 
+- Preventing agents blowing up prod
+- Preventing agents from running 5 compilers and melting your CPU
 
 
 ---
+hideInToc: true
+---
 
-# My principles
+# Sandbox as a tool
 
-<v-clicks>
+## Bad approaches:
+- Tell the agent "please do not read .env" (They will)
+- Prevent the read tool from reading ssh keys (The agent will now use `cat`)
 
-1. **The agent is a computer, and I augment my thinking with computers**
-   - Write "programs" to structure the agent's work
+## Good approaches:
+1) Put the agent in a sandbox.
+    - Works, but it can still read `~/.ssh`, `.env` in the container.
+    - Agent needs its own filesystem, accounts etc
+2) Put the *tools* in a sandbox.
+    - Agent can see your files, but can never see secrets.
 
-2. **If I don't think about what I'm doing, I become a slop cannon**
-   - Plans and understanding matter more than speed
+## *Decouple the agent's brain from its hands*
 
-3. **Project state lives in source code, not in my memory**
-   - Agents should understand a project from the repo alone
+---
+layout: statement
+---
 
-4. **I can only focus on 1–2 things at a time**
-   - Agents handle breadth; I keep depth and judgment
+# Working together
 
-5. **Bash is all you need**
-   - Plain text and small tools compose extremely well
 
-</v-clicks>
+---
+hideInToc: true
+---
 
+# Obvious Concerns
+
+- **Security & data sovereignty**
+- **Governance**
+- **Infrastructure**
+- **Reproducibility**
+- **Climate Impact**
+
+We don't have the answers to all of these! But we can try :)
+
+---
+hideInToc: true
+---
+
+# Agentic AI Interest Group
+
+- We're launching a group for people who want to use agents seriously.
+- We can discuss tools, workflows, and various ideas about what does/doesn't work.
+- Bring your research problems, ideas and criticisms :D
+- Possibility for periodic talks, training etc.
+
+## Please join if you're interested!
+
+---
+hideInToc: true
+---
+
+# Other Work
+
+- We'll be spending the next few months evaulating various different agent frameworks/tools/etc
+- Will also be running workshops/seminars etc. to help people get started.
+
+If this sounds interesting:
+- Think about how you can use agents in your work, and please let us know your ideas.
+- Not sure how an agent can help? Confused by agents? Get in touch!
 
 ---
 layout: statement
 hideInToc: true
 ---
 
-# Don't be a slop cannon
+# Thanks for listening
 
-![Shen](./images/shen.png){.max-h-100 .object-contain .mx-auto}
+## What questions do you have?
